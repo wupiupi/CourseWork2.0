@@ -15,6 +15,7 @@
 		A026DA082B0D0AC400161689 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA072B0D0AC300161689 /* LoginController.swift */; };
 		A026DA0A2B0D0AD700161689 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA092B0D0AD700161689 /* RegisterController.swift */; };
 		A026DA0C2B0D0B0A00161689 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA0B2B0D0B0A00161689 /* HomeController.swift */; };
+		A026DA0F2B0D110500161689 /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA0E2B0D110500161689 /* AuthHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A026DA072B0D0AC300161689 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A026DA092B0D0AD700161689 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		A026DA0B2B0D0B0A00161689 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		A026DA0E2B0D110500161689 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +62,11 @@
 		A026D9EF2B0D093300161689 /* CourseWork2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A026DA0D2B0D0B4900161689 /* Views */,
 				A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */,
 				A026DA0B2B0D0B0A00161689 /* HomeController.swift */,
 				A026DA092B0D0AD700161689 /* RegisterController.swift */,
 				A026DA072B0D0AC300161689 /* LoginController.swift */,
+				A026DA0D2B0D0B4900161689 /* Views */,
 				A026DA042B0D0A6700161689 /* Supporting */,
 				A026D9FE2B0D093400161689 /* Info.plist */,
 			);
@@ -85,6 +87,7 @@
 		A026DA0D2B0D0B4900161689 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A026DA0E2B0D110500161689 /* AuthHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				A026D9F12B0D093300161689 /* AppDelegate.swift in Sources */,
 				A026D9F32B0D093300161689 /* SceneDelegate.swift in Sources */,
 				A026DA082B0D0AC400161689 /* LoginController.swift in Sources */,
+				A026DA0F2B0D110500161689 /* AuthHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
