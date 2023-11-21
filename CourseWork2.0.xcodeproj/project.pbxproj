@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		A026D9F12B0D093300161689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026D9F02B0D093300161689 /* AppDelegate.swift */; };
 		A026D9F32B0D093300161689 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026D9F22B0D093300161689 /* SceneDelegate.swift */; };
-		A026D9F52B0D093300161689 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026D9F42B0D093300161689 /* ViewController.swift */; };
-		A026D9F82B0D093300161689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A026D9F62B0D093300161689 /* Main.storyboard */; };
 		A026D9FA2B0D093400161689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A026D9F92B0D093400161689 /* Assets.xcassets */; };
 		A026D9FD2B0D093400161689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A026D9FB2B0D093400161689 /* LaunchScreen.storyboard */; };
+		A026DA062B0D0AAD00161689 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */; };
+		A026DA082B0D0AC400161689 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA072B0D0AC300161689 /* LoginController.swift */; };
+		A026DA0A2B0D0AD700161689 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA092B0D0AD700161689 /* RegisterController.swift */; };
+		A026DA0C2B0D0B0A00161689 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026DA0B2B0D0B0A00161689 /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A026D9ED2B0D093300161689 /* CourseWork2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseWork2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A026D9F02B0D093300161689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A026D9F22B0D093300161689 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A026D9F42B0D093300161689 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A026D9F72B0D093300161689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A026D9F92B0D093400161689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A026D9FC2B0D093400161689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A026D9FE2B0D093400161689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
+		A026DA072B0D0AC300161689 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		A026DA092B0D0AD700161689 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		A026DA0B2B0D0B0A00161689 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		A026D9EF2B0D093300161689 /* CourseWork2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A026D9F02B0D093300161689 /* AppDelegate.swift */,
-				A026D9F22B0D093300161689 /* SceneDelegate.swift */,
-				A026D9F42B0D093300161689 /* ViewController.swift */,
-				A026D9F62B0D093300161689 /* Main.storyboard */,
-				A026D9F92B0D093400161689 /* Assets.xcassets */,
-				A026D9FB2B0D093400161689 /* LaunchScreen.storyboard */,
+				A026DA0D2B0D0B4900161689 /* Views */,
+				A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */,
+				A026DA0B2B0D0B0A00161689 /* HomeController.swift */,
+				A026DA092B0D0AD700161689 /* RegisterController.swift */,
+				A026DA072B0D0AC300161689 /* LoginController.swift */,
+				A026DA042B0D0A6700161689 /* Supporting */,
 				A026D9FE2B0D093400161689 /* Info.plist */,
 			);
 			path = CourseWork2.0;
+			sourceTree = "<group>";
+		};
+		A026DA042B0D0A6700161689 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				A026D9F02B0D093300161689 /* AppDelegate.swift */,
+				A026D9F22B0D093300161689 /* SceneDelegate.swift */,
+				A026D9F92B0D093400161689 /* Assets.xcassets */,
+				A026D9FB2B0D093400161689 /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		A026DA0D2B0D0B4900161689 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +149,6 @@
 			files = (
 				A026D9FD2B0D093400161689 /* LaunchScreen.storyboard in Resources */,
 				A026D9FA2B0D093400161689 /* Assets.xcassets in Resources */,
-				A026D9F82B0D093300161689 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +159,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A026D9F52B0D093300161689 /* ViewController.swift in Sources */,
+				A026DA062B0D0AAD00161689 /* ForgotPasswordController.swift in Sources */,
+				A026DA0C2B0D0B0A00161689 /* HomeController.swift in Sources */,
+				A026DA0A2B0D0AD700161689 /* RegisterController.swift in Sources */,
 				A026D9F12B0D093300161689 /* AppDelegate.swift in Sources */,
 				A026D9F32B0D093300161689 /* SceneDelegate.swift in Sources */,
+				A026DA082B0D0AC400161689 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A026D9F62B0D093300161689 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A026D9F72B0D093300161689 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A026D9FB2B0D093400161689 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -218,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -292,13 +308,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSKFLS4ZH5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CourseWork2.0/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,9 +323,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "wupiupi.CourseWork2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,13 +339,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSKFLS4ZH5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CourseWork2.0/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,9 +354,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "wupiupi.CourseWork2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
