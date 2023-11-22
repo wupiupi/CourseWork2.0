@@ -14,8 +14,6 @@ class AuthService {
     public static let shared = AuthService()
     private init() {}
     
-    
-    
     /// A method to register the user
     /// - Parameters:
     ///   - userRequest: The users information (username, email, password)
@@ -58,6 +56,31 @@ class AuthService {
                     
                     completion(true, nil)
                 }
+        }
+    }
+    
+    public func signIn(
+        with userRequest: LoginUserRequest,
+        completion: @escaping (Error?) -> Void
+    ) {
+        Auth.auth().signIn(
+            withEmail: userRequest.email,
+            password: userRequest.password) { result, error in
+                if let error {
+                    completion(error)
+                    return
+                } else {
+                    completion(nil)
+                }
+            }
+    }
+    
+    public func signOut(completion: @escaping (Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let error {
+            completion(error)
         }
     }
 }
