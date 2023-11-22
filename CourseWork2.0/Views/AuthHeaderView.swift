@@ -39,8 +39,8 @@ class AuthHeaderView: UIView {
     init(title: String, subtitle: String) {
         super.init(frame: .zero)
         
-        self.titleLabel.text = title
-        self.subTitleLabel.text = subtitle
+        titleLabel.text = title
+        subTitleLabel.text = subtitle
         
         self.setupUI()
     }
