@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBEPe71QzXI99ILfGTVt475bLEwVdxeS3c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>162207698503</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>wupiupi.CourseWork2-0</string>
+	<key>PROJECT_ID</key>
+	<string>coursework-efe83</string>
+	<key>STORAGE_BUCKET</key>
+	<string>coursework-efe83.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:162207698503:ios:c62074a51fc083b2702b62</string>
+</dict>
+</plist>
