@@ -15,9 +15,9 @@ class LoginController: UIViewController {
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big)
-    private let newUserButton = CustomButton(title: "New User? Create Account.", hasBackground: false, fontSize: .medium)
-    private let forgotPasswordButton = CustomButton(title: "Forgot Password?", hasBackground: false, fontSize: .small)
+    private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big, textColor: .label)
+    private let newUserButton = CustomButton(title: "New User? Create Account.", hasBackground: false, fontSize: .medium, textColor: .systemYellow)
+    private let forgotPasswordButton = CustomButton(title: "Forgot Password?", hasBackground: false, fontSize: .small, textColor: .label)
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class LoginController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .systemGray6
         
         self.view.addSubview(headerView)
         self.view.addSubview(emailField)

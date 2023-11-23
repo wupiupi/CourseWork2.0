@@ -16,8 +16,8 @@ class RegisterController: UIViewController {
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
-    private let signInButton = CustomButton(title: "Already have an account? Sign In.", hasBackground: false, fontSize: .medium)
+    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big, textColor: .label)
+    private let signInButton = CustomButton(title: "Already have an account? Sign In.", hasBackground: false, fontSize: .medium, textColor: .systemYellow)
     
     private let termsTextView: UITextView = {
         let attributedString = NSMutableAttributedString(string: "By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy.")
@@ -27,7 +27,7 @@ class RegisterController: UIViewController {
         attributedString.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedString.string as NSString).range(of: "Privacy Policy"))
         
         let tv = UITextView()
-        tv.linkTextAttributes = [.foregroundColor: UIColor.systemBlue]
+        tv.linkTextAttributes = [.foregroundColor: UIColor.systemYellow]
         tv.backgroundColor = .clear
         tv.attributedText = attributedString
         tv.textColor = .label
@@ -56,7 +56,7 @@ class RegisterController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .systemGray6
         
         self.view.addSubview(headerView)
         self.view.addSubview(usernameField)

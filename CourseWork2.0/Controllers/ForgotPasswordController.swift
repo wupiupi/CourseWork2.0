@@ -14,7 +14,7 @@ class ForgotPasswordController: UIViewController {
     
     private let emailField = CustomTextField(fieldType: .email)
     
-    private let resetPasswordButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
+    private let resetPasswordButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big, textColor: .label)
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class ForgotPasswordController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .systemGray6
         
         self.view.addSubview(headerView)
         self.view.addSubview(emailField)
