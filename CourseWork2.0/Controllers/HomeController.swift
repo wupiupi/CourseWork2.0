@@ -152,6 +152,7 @@ class HomeController: UIViewController {
     }
     
     @objc private func didTapWarehouse() {
-        print("DEBUG PRINT", "didTapWarehouse")
+        let vc = WarehouseViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
