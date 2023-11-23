@@ -1,8 +1,8 @@
 //
 //  LoginController.swift
-//  CourseWork2.0
+//  swift-login-system-tutorial
 //
-//  Created by Paul Makey on 21.11.23.
+//  Created by YouTube on 2022-10-26.
 //
 
 import UIKit
@@ -10,10 +10,7 @@ import UIKit
 class LoginController: UIViewController {
     
     // MARK: - UI Components
-    private let headerView = AuthHeaderView(
-        title: "Sign in",
-        subtitle: "Sign in to your account"
-    )
+    private let headerView = AuthHeaderView(title: "Sign In", subtitle: "Sign in to your account")
     
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
@@ -21,7 +18,8 @@ class LoginController: UIViewController {
     private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big)
     private let newUserButton = CustomButton(title: "New User? Create Account.", hasBackground: false, fontSize: .medium)
     private let forgotPasswordButton = CustomButton(title: "Forgot Password?", hasBackground: false, fontSize: .small)
-
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -34,13 +32,11 @@ class LoginController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        
-//        self.didTapNewUser()
     }
     
-    // MARK: - Setup UI
+    // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .systemBackground
         
         self.view.addSubview(headerView)
         self.view.addSubview(emailField)
@@ -55,7 +51,7 @@ class LoginController: UIViewController {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         newUserButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
             self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -85,16 +81,39 @@ class LoginController: UIViewController {
             self.forgotPasswordButton.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: 6),
             self.forgotPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             self.forgotPasswordButton.heightAnchor.constraint(equalToConstant: 44),
-            self.forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
+            self.forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
     }
     
     // MARK: - Selectors
     @objc private func didTapSignIn() {
-        let vc = HomeController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil )
+        let loginRequest = LoginUserRequest(
+            email: self.emailField.text ?? "",
+            password: self.passwordField.text ?? ""
+        )
+        
+        // Email check
+        if !Validator.isValidEmail(for: loginRequest.email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        
+        // Password check
+        if !Validator.isPasswordValid(for: loginRequest.password) {
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        
+        AuthService.shared.signIn(with: loginRequest) { error in
+            if let error = error {
+                AlertManager.showSignInErrorAlert(on: self, with: error)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            }
+        }
     }
     
     @objc private func didTapNewUser() {
@@ -106,5 +125,4 @@ class LoginController: UIViewController {
         let vc = ForgotPasswordController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }

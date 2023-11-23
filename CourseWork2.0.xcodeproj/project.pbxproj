@@ -19,6 +19,7 @@
 		A04125B52B0E1C3400DA9063 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04125B42B0E1C3400DA9063 /* CustomTextField.swift */; };
 		A04125B72B0E215400DA9063 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04125B62B0E215400DA9063 /* CustomButton.swift */; };
 		A04125B92B0E30DC00DA9063 /* WebViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04125B82B0E30DC00DA9063 /* WebViewerController.swift */; };
+		A07DB03B2B0F5789005FF15B /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DB03A2B0F5789005FF15B /* Validator.swift */; };
 		A0953B842B0E96B40095A0FA /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B832B0E96B40095A0FA /* AlertManager.swift */; };
 		A0953B862B0EA7CD0095A0FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0953B852B0EA7CD0095A0FA /* GoogleService-Info.plist */; };
 		A0953B892B0EA8DB0095A0FA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A0953B882B0EA8DB0095A0FA /* FirebaseAnalytics */; };
@@ -32,6 +33,7 @@
 		A0953B9A2B0EAE410095A0FA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B992B0EAE410095A0FA /* AuthService.swift */; };
 		A0953B9D2B0EAF710095A0FA /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B9C2B0EAF710095A0FA /* RegisterUserRequest.swift */; };
 		A0953B9F2B0EB8DC0095A0FA /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B9E2B0EB8DC0095A0FA /* LoginUserRequest.swift */; };
+		A0A364672B0F8231007A7043 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A364662B0F8231007A7043 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,11 +51,13 @@
 		A04125B42B0E1C3400DA9063 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		A04125B62B0E215400DA9063 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A04125B82B0E30DC00DA9063 /* WebViewerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewerController.swift; sourceTree = "<group>"; };
+		A07DB03A2B0F5789005FF15B /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		A0953B832B0E96B40095A0FA /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		A0953B852B0EA7CD0095A0FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0953B992B0EAE410095A0FA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A0953B9C2B0EAF710095A0FA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 		A0953B9E2B0EB8DC0095A0FA /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
+		A0A364662B0F8231007A7043 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,6 @@
 		A026D9EF2B0D093300161689 /* CourseWork2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A0953B992B0EAE410095A0FA /* AuthService.swift */,
-				A0953B832B0E96B40095A0FA /* AlertManager.swift */,
 				A0953B9B2B0EAF350095A0FA /* Models */,
 				A0953B822B0E968E0095A0FA /* Controllers */,
 				A026DA0D2B0D0B4900161689 /* Views */,
@@ -121,6 +123,9 @@
 		A026DA0D2B0D0B4900161689 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A0953B832B0E96B40095A0FA /* AlertManager.swift */,
+				A0953B992B0EAE410095A0FA /* AuthService.swift */,
+				A07DB03A2B0F5789005FF15B /* Validator.swift */,
 				A026DA0E2B0D110500161689 /* AuthHeaderView.swift */,
 				A04125B42B0E1C3400DA9063 /* CustomTextField.swift */,
 				A04125B62B0E215400DA9063 /* CustomButton.swift */,
@@ -152,6 +157,7 @@
 			children = (
 				A0953B9C2B0EAF710095A0FA /* RegisterUserRequest.swift */,
 				A0953B9E2B0EB8DC0095A0FA /* LoginUserRequest.swift */,
+				A0A364662B0F8231007A7043 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,9 +250,11 @@
 				A0953B842B0E96B40095A0FA /* AlertManager.swift in Sources */,
 				A026DA0C2B0D0B0A00161689 /* HomeController.swift in Sources */,
 				A0953B9A2B0EAE410095A0FA /* AuthService.swift in Sources */,
+				A0A364672B0F8231007A7043 /* User.swift in Sources */,
 				A0953B9F2B0EB8DC0095A0FA /* LoginUserRequest.swift in Sources */,
 				A04125B72B0E215400DA9063 /* CustomButton.swift in Sources */,
 				A026DA0A2B0D0AD700161689 /* RegisterController.swift in Sources */,
+				A07DB03B2B0F5789005FF15B /* Validator.swift in Sources */,
 				A026D9F12B0D093300161689 /* AppDelegate.swift in Sources */,
 				A04125B52B0E1C3400DA9063 /* CustomTextField.swift in Sources */,
 				A0953B9D2B0EAF710095A0FA /* RegisterUserRequest.swift in Sources */,

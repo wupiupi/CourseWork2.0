@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  CourseWork2.0
+//  swift-login-system-tutorial
 //
-//  Created by Paul Makey on 21.11.23.
+//  Created by YouTube on 2022-10-26.
 //
 
 import UIKit
@@ -11,11 +11,10 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         self.setupWindow(with: scene)
-        checkAuthentication()
+        self.checkAuthentication()
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -33,23 +32,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    //Make this with animation
     private func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
-            UIView.animate(
-                withDuration: 0.25) {
-                    self?.window?.layer.opacity = 0
-                } completion: { [weak self] _ in
-                    
-                    let nav = UINavigationController(rootViewController: viewController)
-                    nav.modalPresentationStyle = .fullScreen
-                    self?.window?.rootViewController = nav
-                    
-                    UIView.animate(withDuration: 0.25) { [weak self] in
-                        self?.window?.layer.opacity = 1
-                    }
+            UIView.animate(withDuration: 0.25) {
+                self?.window?.layer.opacity = 0
+                
+            } completion: { [weak self] _ in
+                
+                let nav = UINavigationController(rootViewController: viewController)
+                nav.modalPresentationStyle = .fullScreen
+                self?.window?.rootViewController = nav
+                
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    self?.window?.layer.opacity = 1
                 }
+            }
         }
     }
 }
-

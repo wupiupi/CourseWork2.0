@@ -1,8 +1,8 @@
 //
 //  RegisterController.swift
-//  CourseWork2.0
+//  swift-login-system-tutorial
 //
-//  Created by Paul Makey on 21.11.23.
+//  Created by YouTube on 2022-10-26.
 //
 
 import UIKit
@@ -10,10 +10,7 @@ import UIKit
 class RegisterController: UIViewController {
     
     // MARK: - UI Components
-    private let headerView = AuthHeaderView(
-        title: "Sign Up",
-        subtitle: "Create your account"
-    )
+    private let headerView = AuthHeaderView(title: "Sign Up", subtitle: "Create your account")
     
     private let usernameField = CustomTextField(fieldType: .username)
     private let emailField = CustomTextField(fieldType: .email)
@@ -23,7 +20,6 @@ class RegisterController: UIViewController {
     private let signInButton = CustomButton(title: "Already have an account? Sign In.", hasBackground: false, fontSize: .medium)
     
     private let termsTextView: UITextView = {
-        
         let attributedString = NSMutableAttributedString(string: "By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy.")
         
         attributedString.addAttribute(.link, value: "terms://termsAndConditions", range: (attributedString.string as NSString).range(of: "Terms & Conditions"))
@@ -31,8 +27,7 @@ class RegisterController: UIViewController {
         attributedString.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedString.string as NSString).range(of: "Privacy Policy"))
         
         let tv = UITextView()
-        
-        tv.linkTextAttributes = [.foregroundColor: UIColor.systemYellow]
+        tv.linkTextAttributes = [.foregroundColor: UIColor.systemBlue]
         tv.backgroundColor = .clear
         tv.attributedText = attributedString
         tv.textColor = .label
@@ -42,7 +37,7 @@ class RegisterController: UIViewController {
         tv.isScrollEnabled = false
         return tv
     }()
-
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +54,9 @@ class RegisterController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    // MARK: - Setup UI
+    // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .systemBackground
         
         self.view.addSubview(headerView)
         self.view.addSubview(usernameField)
@@ -78,7 +73,7 @@ class RegisterController: UIViewController {
         self.signUpButton.translatesAutoresizingMaskIntoConstraints = false
         self.termsTextView.translatesAutoresizingMaskIntoConstraints = false
         self.signInButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
             self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -118,11 +113,53 @@ class RegisterController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapSignUp() {
-        print("DEBUG PRING:", "didTapSignUp")
+        let registerUserRequest = RegisterUserRequest(
+            username: self.usernameField.text ?? "",
+            email: self.emailField.text ?? "",
+            password: self.passwordField.text ?? ""
+        )
+        
+        // Username check
+        if !Validator.isValidUsername(for: registerUserRequest.username) {
+            AlertManager.showInvalidUsernameAlert(on: self)
+            return
+        }
+        
+        // Email check
+        if !Validator.isValidEmail(for: registerUserRequest.email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        
+        // Password check
+        if !Validator.isPasswordValid(for: registerUserRequest.password) {
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        
+        AuthService.shared.registerUser(with: registerUserRequest) {
+            [weak self] wasRegistered,
+            error in
+                
+            guard let self = self else { return }
+            
+                if let error = error {
+                AlertManager.showRegistrationErrorAlert(on: self, with: error)
+                return
+            }
+            
+            if wasRegistered {
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkAuthentication()
+                }
+            } else {
+                AlertManager.showRegistrationErrorAlert(on: self)
+            }
+        }
     }
     
     @objc private func didTapSignIn() {
-        self.navigationController?.popToRootViewController(animated: true )
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -132,22 +169,30 @@ extension RegisterController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
         if URL.scheme == "terms" {
-            showWebViewerController(with: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+            self.showWebViewerController(with: "https://policies.google.com/terms?hl=en")
         } else if URL.scheme == "privacy" {
-            showWebViewerController(with: "https://policies.google.com/privacy?hl=en-US")
+            self.showWebViewerController(with: "https://policies.google.com/privacy?hl=en")
         }
+        
         return true
     }
     
     private func showWebViewerController(with urlString: String) {
         let vc = WebViewerController(with: urlString)
         let nav = UINavigationController(rootViewController: vc)
-        self.present(nav, animated: true)
+        self.present(nav, animated: true, completion: nil)
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         textView.delegate = nil
         textView.selectedTextRange = nil
         textView.delegate = self
+    }
+}
+
+extension RegisterController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

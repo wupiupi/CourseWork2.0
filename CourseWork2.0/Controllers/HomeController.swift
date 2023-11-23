@@ -1,8 +1,8 @@
 //
 //  HomeController.swift
-//  CourseWork2.0
+//  swift-login-system-tutorial
 //
-//  Created by Paul Makey on 21.11.23.
+//  Created by YouTube on 2022-10-26.
 //
 
 import UIKit
@@ -20,42 +20,33 @@ class HomeController: UIViewController {
         return label
     }()
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        self.setupUI()
     }
-    
     
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemGray6
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Logout",
-            style: .plain,
-            target: self,
-            action: #selector(didTapLogout)
-        )
+        self.view.backgroundColor = .systemBackground
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         
         self.view.addSubview(label)
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
         ])
     }
-    
     
     // MARK: - Selectors
     @objc private func didTapLogout() {
         AuthService.shared.signOut { [weak self] error in
-            guard let self else {return}
-            if let error {
-                AlertManager.showLogoutErrorAlert(on: self, with: error)
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showLogoutError(on: self, with: error)
                 return
             }
             
@@ -64,4 +55,5 @@ class HomeController: UIViewController {
             }
         }
     }
+    
 }

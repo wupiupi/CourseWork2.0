@@ -1,8 +1,8 @@
 //
 //  WebViewerController.swift
-//  CourseWork2.0
+//  swift-login-system-tutorial
 //
-//  Created by Paul Makey on 22.11.23.
+//  Created by YouTube on 2022-10-29.
 //
 
 import UIKit
@@ -13,10 +13,9 @@ class WebViewerController: UIViewController {
     private let webView = WKWebView()
     private let urlString: String
     
-    init(with urlSrtring: String) {
-        self.urlString = urlSrtring
+    init(with urlString: String) {
+        self.urlString = urlString
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -27,17 +26,18 @@ class WebViewerController: UIViewController {
         super.viewDidLoad()
         self.setupUI()
         
-        guard let url = URL(string: urlString) else {
-            self.dismiss(animated: true)
+        guard let url = URL(string: self.urlString) else {
+            self.dismiss(animated: true, completion: nil)
             return
         }
         
         self.webView.load(URLRequest(url: url))
+        
+        // TODO: - GIT BEFORE CODING
     }
     
     private func setupUI() {
-        self.navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
         self.navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
         
         self.view.addSubview(webView)
@@ -55,4 +55,3 @@ class WebViewerController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
-
