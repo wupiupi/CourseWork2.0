@@ -1,8 +1,8 @@
 //
 //  AuthService.swift
-//  swift-login-system-tutorial
+//  CourseWork2.0
 //
-//  Created by YouTube on 2022-11-02.
+//  Created by Paul Makey on 23.11.23.
 //
 
 import Foundation
@@ -85,6 +85,25 @@ class AuthService {
     
     public func fetchUser(completion: @escaping (User?, Error?) -> Void) {
         
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(userUID)
+            .getDocument { snapshot, error in
+                if let error {
+                    completion(nil, error)
+                    return
+                }
+                
+                if let snapshot,
+                   let snapshotData = snapshot.data(),
+                   let username = snapshotData["username"] as? String,
+                   let email = snapshotData["email"] as? String {
+                    let user = User(username: username, email: email, userUID: userUID)
+                    completion(user, nil)
+                }
+            }
     }
     
 }
