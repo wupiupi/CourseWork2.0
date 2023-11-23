@@ -23,7 +23,6 @@ class CustomButton: UIButton {
         
         self.backgroundColor = hasBackground ? .systemGray4 : .clear
         
-//        let titleColor: UIColor = .label
         self.setTitleColor(textColor, for: .normal )
         
         switch fontSize {
