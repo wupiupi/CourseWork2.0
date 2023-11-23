@@ -1,8 +1,8 @@
 //
 //  HomeController.swift
-//  swift-login-system-tutorial
+//  CourseWork2.0
 //
-//  Created by YouTube on 2022-10-26.
+//  Created by Paul Makey on 23.11.23.
 //
 
 import UIKit
@@ -24,6 +24,18 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        
+        AuthService.shared.fetchUser { [weak self] user, error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showFetchingUserError(on: self, with: error)
+                return
+            }
+            
+            if let user {
+                self.label.text = "\(user.username)\n\(user.email)"
+            }
+        }
     }
     
     

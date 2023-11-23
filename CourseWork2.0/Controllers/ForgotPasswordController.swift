@@ -1,8 +1,8 @@
 //
 //  ForgotPasswordController.swift
-//  swift-login-system-tutorial
+//  CourseWork2.0
 //
-//  Created by YouTube on 2022-10-26.
+//  Created by Paul Makey on 23.11.23.
 //
 
 import UIKit
