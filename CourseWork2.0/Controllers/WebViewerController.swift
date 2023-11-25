@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebViewerController: UIViewController {
+final class WebViewerController: UIViewController {
     
     private let webView = WKWebView()
     private let urlString: String

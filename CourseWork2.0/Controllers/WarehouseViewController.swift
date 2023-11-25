@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import Foundation
 
-class WarehouseViewController: UIViewController {
+final class WarehouseViewController: UIViewController {
     
     // MARK: - UI Components
     private let stackView: UIStackView = {

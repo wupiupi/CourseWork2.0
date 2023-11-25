@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterController: UIViewController {
+final class RegisterController: UIViewController {
     
     // MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Sign Up", subtitle: "Create your account")

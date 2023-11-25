@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordController: UIViewController {
+final class ForgotPasswordController: UIViewController {
     
     // MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Forgot Password", subtitle: "Reset your password")

@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-class WarehouseEditorViewController: UIViewController {
+final class WarehouseEditorViewController: UIViewController {
     
     // MARK: - Variables
     var areWeAdding = true
