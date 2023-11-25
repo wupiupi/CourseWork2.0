@@ -7,13 +7,14 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class WarehouseEditorViewController: UIViewController {
     
     // MARK: - Variables
     var areWeAdding = true
     
-    private let headerView = AuthHeaderView(
+    var headerView = AuthHeaderView(
         title: "Attention",
         subtitle: "You want to delete item from a list."
     )
@@ -25,15 +26,23 @@ class WarehouseEditorViewController: UIViewController {
         textColor: .label
     )
     
-    
     // MARK: - UI Components
-    let textField = CustomTextField(fieldType: .label)
+    private let stackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    let itemField = CustomTextField(fieldType: .label)
+    let amountField = CustomTextField(fieldType: .label)
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print(areWeAdding)
         
+        super.viewDidLoad()
         setupUI()
         
         doneButton.addTarget(
@@ -48,37 +57,104 @@ class WarehouseEditorViewController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-         
+        
         self.view.backgroundColor = .systemGray6
         
         self.view.addSubview(headerView)
-        self.view.addSubview(textField)
+        self.view.addSubview(itemField)
+        self.view.addSubview(amountField)
+        
         self.view.addSubview(doneButton)
         
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(stackView)
         
-        NSLayoutConstraint.activate([
-            self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.headerView.heightAnchor.constraint(equalToConstant: 222),
-            
-            self.textField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
-            self.textField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.textField.heightAnchor.constraint(equalToConstant: 55),
-            self.textField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            self.doneButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 22),
-            self.doneButton.centerXAnchor.constraint(equalTo: textField.centerXAnchor),
-            self.doneButton.heightAnchor.constraint(equalToConstant: 55),
-            self.doneButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
-        ])
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        itemField.translatesAutoresizingMaskIntoConstraints = false
+        amountField.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(itemField)
+        stackView.addArrangedSubview(amountField)
+        stackView.addArrangedSubview(doneButton)
+        
+        NSLayoutConstraint.activate(
+            [
+                self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+                self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                self.headerView.heightAnchor.constraint(equalToConstant: 222),
+                
+                self.stackView.topAnchor.constraint(
+                    equalTo: self.headerView.bottomAnchor,
+                    constant: 20
+                ),
+                self.stackView.leadingAnchor.constraint(
+                    equalTo: self.view.leadingAnchor,
+                    constant: 26
+                ),
+                self.stackView.trailingAnchor.constraint(
+                    equalTo: self.view.trailingAnchor,
+                    constant: 26
+                ),
+                self.stackView.widthAnchor.constraint(
+                    equalTo: self.view.widthAnchor,
+                    multiplier: 0.85
+                ),
+                
+                self.amountField.heightAnchor.constraint(equalToConstant: 55),
+                self.itemField.heightAnchor.constraint(equalToConstant: 55)
+            ]
+        )
+    }
+    
+    private func removeFromDatabase(field: String) {
+        
+        if field.isEmpty {
+            AlertManager.showEmptyFieldAlert(on: self)
+            return
+        }
+        
+        let docRef = Firestore.firestore().collection("storage").document("5Gr0T6c6wk2H9WD70Gdd")
+        
+        let updateData = [
+            field: FieldValue.delete()
+        ]
+        
+        docRef.updateData(updateData) { error in
+            if let error = error {
+                print("Error deleting field: \(error)")
+            } else {
+                print("Field deleted successfully!")
+            }
+        }
+    }
+    
+    private func addToDatabase(field: String, value: Int) {
+        let db = Firestore.firestore()
+        let documentRef = db.collection("storage").document("5Gr0T6c6wk2H9WD70Gdd")
+        
+       documentRef.updateData([field: value]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Field added successfully")
+            }
+        }
     }
     
     // MARK: - Selectors
     @objc private func didTapDone() {
-        print("DEBUG PRINT:", "didTapDone")
+        
+        if areWeAdding {
+            guard let value = itemField.text,
+                  let amount = amountField.text else { return }
+            print("Value: \(value)\nAmount: \(amount)")
+            addToDatabase(field: value, value: Int(amount) ?? 0)
+        } else if !areWeAdding {
+            guard let value = itemField.text else { return }
+            print("Value: \(value)")
+            removeFromDatabase(field: value)
+        }
     }
 }
