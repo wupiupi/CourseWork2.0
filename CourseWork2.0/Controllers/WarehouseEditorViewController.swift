@@ -162,5 +162,6 @@ final class WarehouseEditorViewController: UIViewController {
             print("Value: \(value)")
             removeFromDatabase(field: value)
         }
+        self.navigationController?.popViewController(animated: true)
     }
 }
