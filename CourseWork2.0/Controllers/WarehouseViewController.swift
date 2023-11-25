@@ -51,13 +51,19 @@ final class WarehouseViewController: UIViewController {
             action: #selector(didTapRemove),
             for: .touchUpInside
         )
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         fetchStorage { dataArray in
+            self.clearStackView() // Remove existing labels before adding new ones
+            
             for dictionary in dataArray {
                 for (key, value) in dictionary {
                     print("\(key): \(value)")
                     let label = self.getLabel()
-                    label.text = String("\(key): \(value)")
+                    label.text = "\(key): \(value)"
                     self.stackView.addArrangedSubview(label)
                 }
             }
@@ -96,6 +102,10 @@ final class WarehouseViewController: UIViewController {
     }
     
     // MARK: - Methods
+    private func clearStackView() {
+        stackView.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
     private func getLabel() -> UILabel {
             let label = UILabel()
             label.textColor = .label
