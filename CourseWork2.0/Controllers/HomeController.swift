@@ -10,11 +10,7 @@ import UIKit
 final class HomeController: UIViewController {
     
     // MARK: - UI Components
-    
-    private let emailField = CustomTextField(fieldType: .email)
-    private let passwordField = CustomTextField(fieldType: .password)
-    
-    private let planesButton = CustomButton(
+    let planesButton = CustomButton(
         title: "Planes",
         hasBackground: true,
         fontSize: .medium,
