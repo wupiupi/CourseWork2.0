@@ -131,10 +131,16 @@ class WarehouseEditorViewController: UIViewController {
     }
     
     private func addToDatabase(field: String, value: Int) {
+        
+        guard !field.isEmpty else  {
+            AlertManager.showEmptyFieldAlert(on: self)
+            return
+        }
+        
         let db = Firestore.firestore()
         let documentRef = db.collection("storage").document("5Gr0T6c6wk2H9WD70Gdd")
         
-       documentRef.updateData([field: value]) { error in
+        documentRef.updateData([field: value]) { error in
             if let error = error {
                 print("Error updating document: \(error)")
             } else {
