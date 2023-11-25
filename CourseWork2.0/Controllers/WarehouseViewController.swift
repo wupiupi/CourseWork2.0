@@ -134,14 +134,17 @@ class WarehouseViewController: UIViewController {
     // MARK: - Selectors
     @objc private func didTapAdd() {
         let vc = WarehouseEditorViewController()
-        vc.textField.placeholder = "Add new item"
+        vc.itemField.placeholder = "Enter item"
+        vc.amountField.placeholder = "Enter amount"
+        vc.headerView = AuthHeaderView(title: "Attention", subtitle: "You want to add item to a list.")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTapRemove() {
         let vc = WarehouseEditorViewController()
-        vc.textField.placeholder = "Enter MANUALLY item to delete"
+        vc.itemField.placeholder = "Enter MANUALLY item to delete"
         vc.areWeAdding = false
+        vc.amountField.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
