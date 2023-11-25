@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+final class LoginController: UIViewController {
     
     // MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Sign In", subtitle: "Sign in to your account")
@@ -124,5 +124,13 @@ class LoginController: UIViewController {
     @objc private func didTapForgotPassword() {
         let vc = ForgotPasswordController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - Extension
+extension LoginController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
