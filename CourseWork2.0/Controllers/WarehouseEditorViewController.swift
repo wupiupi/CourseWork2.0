@@ -41,15 +41,13 @@ final class WarehouseEditorViewController: UIViewController {
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         setupUI()
         
         doneButton.addTarget(
             self,
-            action: #selector(
-                didTapDone
-            ),
+            action: #selector(didTapDone),
             for: .touchUpInside
         )
     }
@@ -61,12 +59,12 @@ final class WarehouseEditorViewController: UIViewController {
         self.view.backgroundColor = .systemGray6
         
         self.view.addSubview(headerView)
+        self.view.addSubview(stackView)
+        
         self.view.addSubview(itemField)
         self.view.addSubview(amountField)
         
         self.view.addSubview(doneButton)
-        
-        self.view.addSubview(stackView)
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         itemField.translatesAutoresizingMaskIntoConstraints = false
@@ -110,16 +108,14 @@ final class WarehouseEditorViewController: UIViewController {
     
     private func removeFromDatabase(field: String) {
         
-        if field.isEmpty {
+        guard !field.isEmpty else {
             AlertManager.showEmptyFieldAlert(on: self)
             return
         }
         
         let docRef = Firestore.firestore().collection("storage").document("5Gr0T6c6wk2H9WD70Gdd")
         
-        let updateData = [
-            field: FieldValue.delete()
-        ]
+        let updateData = [field: FieldValue.delete()]
         
         docRef.updateData(updateData) { error in
             if let error = error {

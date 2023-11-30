@@ -40,7 +40,7 @@ extension AlertManager {
         self.showBasicAlert(
             on: vc,
             title: "Empty field",
-            message: "Please, enter field name"
+            message: "Please, fill the field(s)"
         )
     }
     
@@ -124,5 +124,20 @@ extension AlertManager {
     
     public static func showUnknownFetchingUserError(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Unknown Error Fetching User", message: nil)
+    }
+}
+
+// MARK: - Already has data error
+extension AlertManager {
+    
+    public static func showRepeatingDataError(
+        on vc: UIViewController,
+        with error: Error
+    ) {
+        self.showBasicAlert(
+            on: vc,
+            title: "Already here",
+            message: "\(error.localizedDescription)"
+        )
     }
 }

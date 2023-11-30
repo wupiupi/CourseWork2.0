@@ -60,8 +60,12 @@ final class WarehouseViewController: UIViewController {
             self.clearStackView() // Remove existing labels before adding new ones
             
             for dictionary in dataArray {
-                for (key, value) in dictionary {
+                let sortedDictionary = dictionary.sorted { $0.key < $1.key }
+                
+                for (key, value) in sortedDictionary {
+                    
                     print("\(key): \(value)")
+                    
                     let label = self.getLabel()
                     label.text = "\(key): \(value)"
                     self.stackView.addArrangedSubview(label)
