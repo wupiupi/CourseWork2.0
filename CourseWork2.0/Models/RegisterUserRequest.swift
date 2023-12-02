@@ -5,8 +5,6 @@
 //  Created by Paul Makey on 23.11.23.
 //
 
-import Foundation
-
 struct RegisterUserRequest {
     let username: String
     let email: String

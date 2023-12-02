@@ -41,12 +41,12 @@ final class RegisterController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        setupUI()
         
-        self.termsTextView.delegate = self
+        termsTextView.delegate = self
         
-        self.signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
-        self.signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,58 +56,58 @@ final class RegisterController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemGray6
+        view.backgroundColor = .systemGray6
         
-        self.view.addSubview(headerView)
-        self.view.addSubview(usernameField)
-        self.view.addSubview(emailField)
-        self.view.addSubview(passwordField)
-        self.view.addSubview(signUpButton)
-        self.view.addSubview(termsTextView)
-        self.view.addSubview(signInButton)
+        view.addSubview(headerView)
+        view.addSubview(usernameField)
+        view.addSubview(emailField)
+        view.addSubview(passwordField)
+        view.addSubview(signUpButton)
+        view.addSubview(termsTextView)
+        view.addSubview(signInButton)
         
-        self.headerView.translatesAutoresizingMaskIntoConstraints = false
-        self.usernameField.translatesAutoresizingMaskIntoConstraints = false
-        self.emailField.translatesAutoresizingMaskIntoConstraints = false
-        self.passwordField.translatesAutoresizingMaskIntoConstraints = false
-        self.signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        self.termsTextView.translatesAutoresizingMaskIntoConstraints = false
-        self.signInButton.translatesAutoresizingMaskIntoConstraints = false
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        usernameField.translatesAutoresizingMaskIntoConstraints = false
+        emailField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        termsTextView.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.headerView.heightAnchor.constraint(equalToConstant: 222),
+            headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 222),
             
-            self.usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
-            self.usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.usernameField.heightAnchor.constraint(equalToConstant: 55),
-            self.usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
+            usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            usernameField.heightAnchor.constraint(equalToConstant: 55),
+            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.emailField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
-            self.emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.emailField.heightAnchor.constraint(equalToConstant: 55),
-            self.emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
+            emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            emailField.heightAnchor.constraint(equalToConstant: 55),
+            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
-            self.passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.passwordField.heightAnchor.constraint(equalToConstant: 55),
-            self.passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
+            passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            passwordField.heightAnchor.constraint(equalToConstant: 55),
+            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
-            self.signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.signUpButton.heightAnchor.constraint(equalToConstant: 55),
-            self.signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
+            signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: 55),
+            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 6),
-            self.termsTextView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 6),
+            termsTextView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 11),
-            self.signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.signInButton.heightAnchor.constraint(equalToConstant: 44),
-            self.signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 11),
+            signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            signInButton.heightAnchor.constraint(equalToConstant: 44),
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
     }
     

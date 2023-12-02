@@ -36,6 +36,10 @@
 		A0953B9D2B0EAF710095A0FA /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B9C2B0EAF710095A0FA /* RegisterUserRequest.swift */; };
 		A0953B9F2B0EB8DC0095A0FA /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0953B9E2B0EB8DC0095A0FA /* LoginUserRequest.swift */; };
 		A0A364672B0F8231007A7043 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A364662B0F8231007A7043 /* User.swift */; };
+		A0C1FE5D2B1BCC4300848CE7 /* PilotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1FE5C2B1BCC4300848CE7 /* PilotsViewController.swift */; };
+		A0C1FE5F2B1BCFB300848CE7 /* PilotsEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1FE5E2B1BCFB300848CE7 /* PilotsEditorViewController.swift */; };
+		A0C1FE612B1BD31900848CE7 /* PlanesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1FE602B1BD31900848CE7 /* PlanesViewController.swift */; };
+		A0C1FE632B1BD32700848CE7 /* PlanesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1FE622B1BD32700848CE7 /* PlanesEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,10 @@
 		A0953B9C2B0EAF710095A0FA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 		A0953B9E2B0EB8DC0095A0FA /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		A0A364662B0F8231007A7043 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A0C1FE5C2B1BCC4300848CE7 /* PilotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilotsViewController.swift; sourceTree = "<group>"; };
+		A0C1FE5E2B1BCFB300848CE7 /* PilotsEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilotsEditorViewController.swift; sourceTree = "<group>"; };
+		A0C1FE602B1BD31900848CE7 /* PlanesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanesViewController.swift; sourceTree = "<group>"; };
+		A0C1FE622B1BD32700848CE7 /* PlanesEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanesEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,13 +148,17 @@
 		A0953B822B0E968E0095A0FA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A04125B82B0E30DC00DA9063 /* WebViewerController.swift */,
-				A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */,
-				A026DA0B2B0D0B0A00161689 /* HomeController.swift */,
 				A026DA092B0D0AD700161689 /* RegisterController.swift */,
 				A026DA072B0D0AC300161689 /* LoginController.swift */,
+				A026DA052B0D0AAD00161689 /* ForgotPasswordController.swift */,
+				A026DA0B2B0D0B0A00161689 /* HomeController.swift */,
+				A0C1FE602B1BD31900848CE7 /* PlanesViewController.swift */,
+				A0C1FE622B1BD32700848CE7 /* PlanesEditorViewController.swift */,
+				A0C1FE5C2B1BCC4300848CE7 /* PilotsViewController.swift */,
+				A0C1FE5E2B1BCFB300848CE7 /* PilotsEditorViewController.swift */,
 				A0400B4F2B0FD2A500CEF38F /* WarehouseViewController.swift */,
 				A0400B512B0FF2A300CEF38F /* WarehouseEditorViewController.swift */,
+				A04125B82B0E30DC00DA9063 /* WebViewerController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -253,13 +265,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A026DA062B0D0AAD00161689 /* ForgotPasswordController.swift in Sources */,
+				A0C1FE612B1BD31900848CE7 /* PlanesViewController.swift in Sources */,
+				A0C1FE632B1BD32700848CE7 /* PlanesEditorViewController.swift in Sources */,
 				A0953B842B0E96B40095A0FA /* AlertManager.swift in Sources */,
 				A0400B502B0FD2A500CEF38F /* WarehouseViewController.swift in Sources */,
 				A026DA0C2B0D0B0A00161689 /* HomeController.swift in Sources */,
+				A0C1FE5F2B1BCFB300848CE7 /* PilotsEditorViewController.swift in Sources */,
 				A0953B9A2B0EAE410095A0FA /* AuthService.swift in Sources */,
 				A0400B522B0FF2A300CEF38F /* WarehouseEditorViewController.swift in Sources */,
 				A0A364672B0F8231007A7043 /* User.swift in Sources */,
 				A0953B9F2B0EB8DC0095A0FA /* LoginUserRequest.swift in Sources */,
+				A0C1FE5D2B1BCC4300848CE7 /* PilotsViewController.swift in Sources */,
 				A04125B72B0E215400DA9063 /* CustomButton.swift in Sources */,
 				A026DA0A2B0D0AD700161689 /* RegisterController.swift in Sources */,
 				A07DB03B2B0F5789005FF15B /* Validator.swift in Sources */,

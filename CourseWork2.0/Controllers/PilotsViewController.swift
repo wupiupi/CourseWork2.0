@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import Foundation
 
-final class WarehouseViewController: UIViewController {
+final class PilotsViewController: UIViewController {
     
     // MARK: - UI Components
     private let stackView: UIStackView = {
@@ -64,10 +64,10 @@ final class WarehouseViewController: UIViewController {
                 
                 for (key, value) in sortedDictionary {
                     
-                    print("\(key): \(value)")
+                    print("ФИО: \(key) Звание: \(value)")
                     
                     let label = self.getLabel()
-                    label.text = "\(key): \(value)"
+                    label.text = "\(key) - \(value)"
                     self.stackView.addArrangedSubview(label)
                 }
             }
@@ -77,31 +77,31 @@ final class WarehouseViewController: UIViewController {
     // MARK: - UI Setup
     private func setupUI() {
         
-        view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .systemGray6
         
-        view.addSubview(stackView)
-        view.addSubview(addButton)
-        view.addSubview(removeButton)
+        self.view.addSubview(stackView)
+        self.view.addSubview(addButton)
+        self.view.addSubview(removeButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addButton.translatesAutoresizingMaskIntoConstraints = false
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 500),
+            self.stackView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+            self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.stackView.heightAnchor.constraint(equalToConstant: 500),
             
-            addButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 22),
-            addButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-            addButton.heightAnchor.constraint(equalToConstant: 55),
-            addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            self.addButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 22),
+            self.addButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+            self.addButton.heightAnchor.constraint(equalToConstant: 55),
+            self.addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            removeButton.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 22),
-            removeButton.centerXAnchor.constraint(equalTo: addButton.centerXAnchor),
-            removeButton.heightAnchor.constraint(equalToConstant: 55),
-            removeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            self.removeButton.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 22),
+            self.removeButton.centerXAnchor.constraint(equalTo: addButton.centerXAnchor),
+            self.removeButton.heightAnchor.constraint(equalToConstant: 55),
+            self.removeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
     }
     
@@ -121,11 +121,11 @@ final class WarehouseViewController: UIViewController {
     
     public func fetchStorage(completion: @escaping ([[String: Any]]) -> Void) {
         let db = Firestore.firestore()
-        let storageCollectionRef = db.collection("storage")
+        let pilotsCollectionRef = db.collection("pilots")
         
         var dataArray: [[String: Any]] = []
         
-        storageCollectionRef.getDocuments { (querySnapshot, error) in
+        pilotsCollectionRef.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error fetching documents: \(error)")
                 completion(dataArray) // Call completion with empty array
@@ -147,16 +147,16 @@ final class WarehouseViewController: UIViewController {
     }
     // MARK: - Selectors
     @objc private func didTapAdd() {
-        let vc = WarehouseEditorViewController()
-        vc.itemField.placeholder = "Enter item"
-        vc.amountField.placeholder = "Enter amount"
+        let vc = PilotsEditorViewController()
+        vc.itemField.placeholder = "Enter pilot name"
+        vc.amountField.placeholder = "Enter pilot rank"
         vc.headerView = AuthHeaderView(title: "Attention", subtitle: "You want to add item to a list.")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTapRemove() {
-        let vc = WarehouseEditorViewController()
-        vc.itemField.placeholder = "Enter MANUALLY item to delete"
+        let vc = PilotsEditorViewController()
+        vc.itemField.placeholder = "Enter MANUALLY pilot to delete"
         vc.areWeAdding = false
         vc.amountField.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)

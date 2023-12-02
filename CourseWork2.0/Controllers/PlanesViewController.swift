@@ -1,5 +1,5 @@
 //
-//  WarehouseViewController.swift
+//  PlanesViewController.swift
 //  CourseWork2.0
 //
 //  Created by Paul Makey on 23.11.23.
@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import Foundation
 
-final class WarehouseViewController: UIViewController {
+final class PlanesViewController: UIViewController {
     
     // MARK: - UI Components
     private let stackView: UIStackView = {
@@ -63,8 +63,6 @@ final class WarehouseViewController: UIViewController {
                 let sortedDictionary = dictionary.sorted { $0.key.localizedCaseInsensitiveCompare($1.key) == .orderedAscending }
                 
                 for (key, value) in sortedDictionary {
-                    
-                    print("\(key): \(value)")
                     
                     let label = self.getLabel()
                     label.text = "\(key): \(value)"
@@ -121,11 +119,11 @@ final class WarehouseViewController: UIViewController {
     
     public func fetchStorage(completion: @escaping ([[String: Any]]) -> Void) {
         let db = Firestore.firestore()
-        let storageCollectionRef = db.collection("storage")
+        let collectionRef = db.collection("planes")
         
         var dataArray: [[String: Any]] = []
         
-        storageCollectionRef.getDocuments { (querySnapshot, error) in
+        collectionRef.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error fetching documents: \(error)")
                 completion(dataArray) // Call completion with empty array
@@ -147,16 +145,16 @@ final class WarehouseViewController: UIViewController {
     }
     // MARK: - Selectors
     @objc private func didTapAdd() {
-        let vc = WarehouseEditorViewController()
-        vc.itemField.placeholder = "Enter item"
+        let vc = PlanesEditorViewController()
+        vc.itemField.placeholder = "Enter plane name"
         vc.amountField.placeholder = "Enter amount"
         vc.headerView = AuthHeaderView(title: "Attention", subtitle: "You want to add item to a list.")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTapRemove() {
-        let vc = WarehouseEditorViewController()
-        vc.itemField.placeholder = "Enter MANUALLY item to delete"
+        let vc = PlanesEditorViewController()
+        vc.itemField.placeholder = "Enter MANUALLY plane name to delete"
         vc.areWeAdding = false
         vc.amountField.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
